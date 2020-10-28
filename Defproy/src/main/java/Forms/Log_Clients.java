@@ -5,17 +5,22 @@
  */
 package Forms;
 
+import Clases.Clientes;
+import Clases.sql;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class Log_Clients extends javax.swing.JFrame {
-
+private final Clientes Ct;
     /**
      * Creates new form Log_Clients
      */
     public Log_Clients() {
         initComponents();
+        Ct = new Clientes();
     }
 
     /**
@@ -31,11 +36,13 @@ public class Log_Clients extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_ID_USUARIO = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        PassClients = new javax.swing.JPasswordField();
         btn_ingresar = new javax.swing.JButton();
         btn_salir = new javax.swing.JButton();
+        txt_CorreoClients = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -60,19 +67,34 @@ public class Log_Clients extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 0, 255));
         jLabel1.setText("Contraseña:");
 
-        jTextField1.setBackground(new java.awt.Color(255, 102, 102));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        txt_ID_USUARIO.setBackground(new java.awt.Color(255, 102, 102));
+        txt_ID_USUARIO.setForeground(new java.awt.Color(0, 0, 0));
+        txt_ID_USUARIO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_ID_USUARIOActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 255));
         jLabel2.setText("Correo:");
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 102, 102));
-        jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
+        PassClients.setBackground(new java.awt.Color(255, 102, 102));
+        PassClients.setForeground(new java.awt.Color(0, 0, 0));
+        PassClients.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PassClientsActionPerformed(evt);
+            }
+        });
 
         btn_ingresar.setBackground(new java.awt.Color(0, 0, 51));
         btn_ingresar.setForeground(new java.awt.Color(255, 255, 255));
         btn_ingresar.setText("Ingresar");
+        btn_ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ingresarActionPerformed(evt);
+            }
+        });
 
         btn_salir.setBackground(new java.awt.Color(0, 0, 51));
         btn_salir.setForeground(new java.awt.Color(255, 255, 255));
@@ -82,6 +104,18 @@ public class Log_Clients extends javax.swing.JFrame {
                 btn_salirActionPerformed(evt);
             }
         });
+
+        txt_CorreoClients.setBackground(new java.awt.Color(255, 102, 102));
+        txt_CorreoClients.setForeground(new java.awt.Color(0, 0, 0));
+        txt_CorreoClients.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_CorreoClientsActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 0, 255));
+        jLabel3.setText("ID CLIENTES:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -94,34 +128,44 @@ public class Log_Clients extends javax.swing.JFrame {
                     .addComponent(btn_salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(24, 24, 24))
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_CorreoClients, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PassClients, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(96, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
+                        .addGap(124, 124, 124)
                         .addComponent(jLabel1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
+                        .addGap(141, 141, 141)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(jLabel2)))))
-                .addGap(0, 107, Short.MAX_VALUE))
+                                .addGap(6, 6, 6)
+                                .addComponent(txt_ID_USUARIO, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_ID_USUARIO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txt_CorreoClients, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PassClients, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addComponent(btn_ingresar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_salir)
@@ -142,7 +186,7 @@ public class Log_Clients extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -150,7 +194,7 @@ public class Log_Clients extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -168,6 +212,27 @@ public class Log_Clients extends javax.swing.JFrame {
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btn_salirActionPerformed
+
+    private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
+           sql a = new sql();
+          int ID_USUARIO = a.ID_INCREMENTABLE();
+           String Correo =txt_CorreoClients.getText();
+          String Pass =PassClients.getText();
+           Ct .SaveData (ID_USUARIO, Correo,Pass);
+           JOptionPane.showMessageDialog(null, "Fue agregado exitosamente :D");
+    }//GEN-LAST:event_btn_ingresarActionPerformed
+
+    private void txt_ID_USUARIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ID_USUARIOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_ID_USUARIOActionPerformed
+
+    private void txt_CorreoClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_CorreoClientsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_CorreoClientsActionPerformed
+
+    private void PassClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassClientsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PassClientsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,14 +270,16 @@ public class Log_Clients extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField PassClients;
     private javax.swing.JButton btn_ingresar;
     private javax.swing.JButton btn_salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txt_CorreoClients;
+    private javax.swing.JTextField txt_ID_USUARIO;
     // End of variables declaration//GEN-END:variables
 }
